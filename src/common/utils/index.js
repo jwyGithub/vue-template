@@ -1,0 +1,2 @@
+export { parseTime } from './utils'
+
