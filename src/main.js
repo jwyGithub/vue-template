@@ -5,9 +5,11 @@ import store from './store';
 
 import common from './common';
 Vue.use(common);
-import './config/index';
+import config from './config/index';
+Vue.use(config);
 
-Vue.config.productionTip = false;
+Vue.config.devtools = true;
+Vue.config.productionTip = true;
 
 new Vue({
     router,

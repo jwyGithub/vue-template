@@ -28,8 +28,6 @@ http.interceptors.request.use(
 http.interceptors.response.use(
     response => {
         Vue.prototype.$loading('off');
-        if (response.status === 200) {
-        }
         return response.data;
     },
     error => {

@@ -9,7 +9,7 @@ switch (envType) {
     case 'pro':
         baseUrl = 'http://localhost/pro';
         break;
-    case 'dev':
+    case 'qa':
         baseUrl = 'http://localhost/qa';
         break;
     default:

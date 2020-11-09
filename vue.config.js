@@ -1,13 +1,20 @@
 const path = require('path');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
 // 清除console
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin'); // 引入插件
 module.exports = {
-    productionSourceMap: process.env.NODE_ENV === 'development',
+    publicPath: '/',
+    productionSourceMap: false,
+    css: {
+        requireModuleExtension: true
+    },
     chainWebpack: config => {
         // 设置别名
         config.resolve.alias
             .set('@', path.join(__dirname, 'src'))
             .set('@assets', path.join(__dirname, 'src/assets'))
+            .set('@common', path.join(__dirname, 'src/common'))
+            .set('@config', path.join(__dirname, 'src/config'))
             .set('@components', path.join(__dirname, 'src/components'))
             .set('@views', path.join(__dirname, 'src/views'));
     },
@@ -20,14 +27,16 @@ module.exports = {
                     uglifyOptions: {
                         compress: {
                             warnings: false,
-                            drop_console: true, //console
+                            drop_console: true,
                             drop_debugger: false,
-                            pure_funcs: ['console.log'] //移除console
+                            //移除console
+                            pure_funcs: ['console.log']
                         }
                     }
                 })
             ]
-        }
+        },
+        plugins: []
     },
     devServer: {
         /* 自动打开浏览器 */
@@ -40,3 +49,13 @@ module.exports = {
     // 第三方插件配置
     pluginOptions: {}
 };
+// fs.readFile('./src/config/devConfig/index.js', err => {
+//     if (err) {
+//         ora('本地开发者信息不存在').fail();
+//         return;
+//     } else {
+//         const devConfig = require('./src/config/devConfig/index');
+//         ora(`当前开发者是:${devConfig.username}`).succeed();
+//         ora(`当前开发者邮箱是:${devConfig.mail}`).succeed();
+//     }
+// });
