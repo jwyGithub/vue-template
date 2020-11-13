@@ -1,6 +1,7 @@
 const path = require('path');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-
+// 增强代码压缩
+const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
 // 清除console
 module.exports = {
     publicPath: '/',
@@ -49,13 +50,3 @@ module.exports = {
     // 第三方插件配置
     pluginOptions: {}
 };
-// fs.readFile('./src/config/devConfig/index.js', err => {
-//     if (err) {
-//         ora('本地开发者信息不存在').fail();
-//         return;
-//     } else {
-//         const devConfig = require('./src/config/devConfig/index');
-//         ora(`当前开发者是:${devConfig.username}`).succeed();
-//         ora(`当前开发者邮箱是:${devConfig.mail}`).succeed();
-//     }
-// });

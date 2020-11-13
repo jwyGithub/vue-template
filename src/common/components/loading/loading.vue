@@ -1,7 +1,7 @@
 <template>
     <transition name="fade">
         <div class="loading" v-show="visible === 'on'">
-            <img src="../../../assets/loading.png" alt="加载中" />
+            <img src="@assets/imgs/loading.png" alt="加载中" />
             <p>加载中...</p>
         </div>
     </transition>

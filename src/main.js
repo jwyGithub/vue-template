@@ -2,6 +2,8 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
+import '@assets/js/rem';
+import '@assets/css/base.less';
 
 import common from './common';
 Vue.use(common);
