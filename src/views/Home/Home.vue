@@ -1,19 +1,25 @@
 <template>
-    <div><CheckBox /></div>
+    <div class="home">
+        <Calendar :date="nowDate" @change="changeValue" />
+    </div>
 </template>
 
 <script>
 import md5 from 'js-md5';
-import CheckBox from '@components/CheckBox/CheckBox';
 import { mapActions, mapGetters } from 'vuex';
 import { sendCode } from '@/apis';
+
+import Calendar from '@components/Calendar/Calendar';
 export default {
+    name: 'Home',
     data() {
-        return {};
+        return {
+            nowDate: new Date().getTime()
+        };
     },
     props: {},
 
-    components: { CheckBox },
+    components: { Calendar },
 
     created() {},
 
@@ -24,7 +30,10 @@ export default {
     },
 
     methods: {
-        ...mapActions(['send', 'userLogin'])
+        ...mapActions(['send', 'userLogin']),
+        changeValue(val) {
+            console.log(val);
+        }
     },
 
     computed: {
@@ -40,7 +49,8 @@ export default {
 </script>
 
 <style scoped>
-* {
-    margin: 0;
+.home {
+    width: 100%;
+    height: 100%;
 }
 </style>

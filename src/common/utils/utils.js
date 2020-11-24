@@ -1,6 +1,6 @@
 function parseTime(date, fmt) {
     date = new Date(date);
-    fmt = fmt || 'yyyy-MM-dd hh:mm:ss'
+    fmt = fmt || 'yyyy-MM-dd hh:mm:ss';
     var o = {
         'M+': date.getMonth() + 1, //月份
         'd+': date.getDate(), //日
@@ -19,8 +19,6 @@ function parseTime(date, fmt) {
         }
     }
     return fmt;
-};
-
-export {
-    parseTime
 }
+
+export { parseTime };
